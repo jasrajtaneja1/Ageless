@@ -1,0 +1,200 @@
+@page "/"
+
+<PageTitle>Ageless Living™ Wellness Centre | Medical Aesthetics & Longevity</PageTitle>
+
+<HeroSection />
+
+<!-- Treatments Section -->
+<section id="treatments" class="py-12 lg:py-20 px-4 lg:px-12 max-w-[1240px] mx-auto">
+    <SectionHeader
+        Tag="Our treatments"
+        Heading="Picture your possible."
+        Description="From skin rejuvenation to longevity medicine, our licensed medical staff offer personalized, holistic treatments designed around you." />
+
+    <!-- 4 Category Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <TreatmentCategoryCard
+            Name="Skin Rejuvenation"
+            Desc="Botox, fillers, laser, facials, and medical-grade peels for face and body."
+            Color="cat-skin"
+            Link="#treat-skin" />
+        <TreatmentCategoryCard
+            Name="Hormone Balancing"
+            Desc="Bioidentical hormone therapy optimized for men and women of all ages."
+            Color="cat-hormone"
+            Link="#treat-hormone" />
+        <TreatmentCategoryCard
+            Name="Biohacking"
+            Desc="IV therapy, NAD+, peptides, and advanced longevity protocols."
+            Color="cat-bio"
+            Link="#treat-bio" />
+        <TreatmentCategoryCard
+            Name="Healthy Weight"
+            Desc="Physician-supervised programs for sustainable, holistic weight management."
+            Color="cat-weight"
+            Link="#treat-weight" />
+    </div>
+
+    <!-- Treatment Groups -->
+    <TreatmentGroupSection />
+
+    <!-- Shop Banner -->
+    <ShopBanner />
+</section>
+
+<!-- Locations Section -->
+<section id="locations" class="py-12 lg:py-20 px-4 lg:px-12 bg-white">
+    <div class="max-w-[1240px] mx-auto">
+        <SectionHeader
+            Tag="Our locations"
+            Heading="Three clinics across British Columbia."
+            Description="Visit us in Langley, Victoria, or Kelowna. Each location offers our full range of services with expert staff." />
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Langley -->
+            <LocationCard City="Langley" Address="415-20178 96th Ave, Langley, BC V1M 0B2" Phone="+1 (236) 326-6830" Email="langley@agelessliving.ca">
+                <HoursContent>
+                    <div class="flex justify-between text-[12px] py-0.5">
+                        <span class="font-medium text-brand-dark">Mon–Fri</span>
+                        <span class="text-brand-muted">9:00 AM – 5:00 PM</span>
+                    </div>
+                    <div class="flex justify-between text-[12px] py-0.5">
+                        <span class="font-medium text-brand-dark">Saturday</span>
+                        <span class="text-brand-muted">10:00 AM – 4:00 PM</span>
+                    </div>
+                    <div class="flex justify-between text-[12px] py-0.5">
+                        <span class="font-medium text-brand-dark">Sunday</span>
+                        <span class="text-brand-muted">Closed</span>
+                    </div>
+                </HoursContent>
+            </LocationCard>
+
+            <!-- Victoria -->
+            <LocationCard City="Victoria" Address="1-101 Burnside Rd W, Victoria, BC V9A 1B7" Phone="+1 (250) 590-5787" Email="wellness@agelessliving.ca">
+                <HoursContent>
+                    <div class="flex justify-between text-[12px] py-0.5">
+                        <span class="font-medium text-brand-dark">Mon–Fri</span>
+                        <span class="text-brand-muted">9:00 AM – 5:00 PM</span>
+                    </div>
+                    <div class="flex justify-between text-[12px] py-0.5">
+                        <span class="font-medium text-brand-dark">Saturday</span>
+                        <span class="text-brand-muted">10:00 AM – 3:00 PM</span>
+                    </div>
+                    <div class="flex justify-between text-[12px] py-0.5">
+                        <span class="font-medium text-brand-dark">Sunday</span>
+                        <span class="text-brand-muted">Closed</span>
+                    </div>
+                </HoursContent>
+            </LocationCard>
+
+            <!-- Kelowna -->
+            <LocationCard City="Kelowna" Address="102-3320 Richter St, Kelowna, BC V1W 4V5" Phone="+1 (778) 760-9827" Email="kelowna@agelessliving.ca">
+                <HoursContent>
+                    <div class="flex justify-between text-[12px] py-0.5">
+                        <span class="font-medium text-brand-dark">Mon–Fri</span>
+                        <span class="text-brand-muted">9:00 AM – 5:00 PM</span>
+                    </div>
+                    <div class="flex justify-between text-[12px] py-0.5">
+                        <span class="font-medium text-brand-dark">Saturday</span>
+                        <span class="text-brand-muted">By appointment</span>
+                    </div>
+                    <div class="flex justify-between text-[12px] py-0.5">
+                        <span class="font-medium text-brand-dark">Sunday</span>
+                        <span class="text-brand-muted">Closed</span>
+                    </div>
+                </HoursContent>
+            </LocationCard>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-12 lg:py-20 px-4 lg:px-12 max-w-[1240px] mx-auto">
+    <AboutSection />
+</section>
+
+<!-- Team Section -->
+<section id="team" class="py-12 lg:py-20 px-4 lg:px-12 bg-white">
+    <TeamSection />
+</section>
+
+<!-- Booking Section -->
+<section id="booking" class="py-12 lg:py-20 px-4 lg:px-12 max-w-[1240px] mx-auto">
+    <BookingWizard />
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-12 lg:py-20 px-4 lg:px-12 bg-white">
+    <div class="max-w-[1240px] mx-auto">
+        <SectionHeader
+            Tag="What our clients say"
+            Heading="Real results, real people."
+            Center="true" />
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <ReviewCard
+                Quote="The team at Ageless Living Victoria made me feel so comfortable. My HydraFacial results were incredible — my skin hasn't looked this good in years."
+                AuthorName="Karen M."
+                Initials="KM"
+                Location="Victoria"
+                Treatment="UltraFacial" />
+
+            <ReviewCard
+                Quote="After struggling with fatigue for years, the hormone optimization program changed everything. I have more energy now than I did at 30."
+                AuthorName="David L."
+                Initials="DL"
+                Location="Langley"
+                Treatment="Hormone Balancing" />
+
+            <ReviewCard
+                Quote="The healthy weight program is unlike any diet I've tried. It's physician-supervised, personalized, and actually sustainable. Down 30 lbs and keeping it off."
+                AuthorName="Jennifer P."
+                Initials="JP"
+                Location="Kelowna"
+                Treatment="Healthy Weight" />
+        </div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section id="blog" class="py-12 lg:py-20 px-4 lg:px-12 max-w-[1240px] mx-auto">
+    <SectionHeader
+        Tag="From our blog"
+        Heading="Insights on wellness and longevity." />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <BlogCard
+            Title="Understanding GLP-1 Agonists: The Science Behind Medical Weight Loss"
+            Category="Medical Weight Loss"
+            Excerpt="Dr. Jean Paul Lim explains how GLP-1 medications work and who might benefit from this approach to weight management."
+            Date="March 15, 2024"
+            BgColor="cat-hormone" />
+
+        <BlogCard
+            Title="A wellness revolution"
+            Category="Press Feature"
+            Excerpt="Boulevard Magazine explores Ageless Living's innovative approach to longevity medicine and biohacking in British Columbia."
+            Date="November 2024"
+            BgColor="cat-bio" />
+
+        <BlogCard
+            Title="Spring skin reset: top 3 treatments for sun-damaged skin"
+            Category="Skin Rejuvenation"
+            Excerpt="Sarita Hutton, RN shares her expert picks for reversing winter damage and preparing your skin for summer."
+            Date="April 2, 2024"
+            BgColor="cat-skin" />
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-12 lg:py-20 px-4 lg:px-12 bg-white">
+    <FaqSection />
+</section>
+
+<!-- Newsletter Section -->
+<NewsletterSection />
+
+<!-- Contact Section -->
+<section id="contact" class="py-12 lg:py-20 px-4 lg:px-12 max-w-[1240px] mx-auto">
+    <ContactSection />
+</section>

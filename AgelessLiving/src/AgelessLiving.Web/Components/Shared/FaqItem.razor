@@ -1,0 +1,24 @@
+@code {
+    [Parameter] public string Question { get; set; } = "";
+    [Parameter] public string Answer { get; set; } = "";
+
+    private bool isOpen = false;
+
+    private void Toggle()
+    {
+        isOpen = !isOpen;
+    }
+}
+
+<div class="border-b border-brand-border">
+    <button @onclick="Toggle" class="w-full flex justify-between items-center py-5 text-left font-display text-[20px] font-medium gap-4">
+        <span>@Question</span>
+        <span class="text-[22px] text-brand-muted transition-transform duration-300 @(isOpen ? "rotate-45" : "")">+</span>
+    </button>
+    @if (isOpen)
+    {
+        <div class="text-[14px] text-brand-muted leading-[1.7] pb-5">
+            @Answer
+        </div>
+    }
+</div>

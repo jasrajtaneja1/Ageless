@@ -1,0 +1,85 @@
+@page "/client-portal"
+
+<PageTitle>Client Portal | Ageless Living™</PageTitle>
+
+<section class="min-h-screen bg-brand-cream">
+    <!-- Portal Header -->
+    <header class="bg-white border-b border-brand-border px-6 py-4">
+        <div class="max-w-[1000px] mx-auto flex justify-between items-center">
+            <div>
+                <span class="font-display text-[20px] font-medium text-brand-teal-dark">Ageless Living™</span>
+                <span class="text-[12px] text-brand-muted ml-2">Client Portal</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-[13px] text-brand-muted">Welcome, Jane</span>
+                <a href="/" class="text-[13px] text-brand-teal hover:underline">Back to site →</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-[1000px] mx-auto p-6">
+        <h1 class="font-display text-[28px] font-medium mb-6">Welcome back, Jane</h1>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <div class="bg-white rounded-lg border border-brand-border p-5">
+                <p class="text-[12px] text-brand-muted mb-1">Next Appointment</p>
+                <p class="font-display text-[18px] font-medium">March 25, 2024</p>
+                <p class="text-[13px] text-brand-teal">HydraFacial · Victoria</p>
+            </div>
+            <div class="bg-white rounded-lg border border-brand-border p-5">
+                <p class="text-[12px] text-brand-muted mb-1">Total Visits</p>
+                <p class="font-display text-[32px] font-medium text-brand-teal">8</p>
+            </div>
+            <div class="bg-white rounded-lg border border-brand-border p-5">
+                <p class="text-[12px] text-brand-muted mb-1">Loyalty Points</p>
+                <p class="font-display text-[32px] font-medium text-brand-gold">420</p>
+            </div>
+        </div>
+
+        <!-- Portal Navigation Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <a href="#" class="bg-white rounded-lg border border-brand-border p-6 hover:border-brand-teal transition block">
+                <h3 class="font-display text-[20px] font-medium mb-2">My Bookings</h3>
+                <p class="text-[14px] text-brand-muted">View upcoming appointments and booking history.</p>
+            </a>
+            <a href="#" class="bg-white rounded-lg border border-brand-border p-6 hover:border-brand-teal transition block">
+                <h3 class="font-display text-[20px] font-medium mb-2">My Orders</h3>
+                <p class="text-[14px] text-brand-muted">Track orders and view purchase history.</p>
+            </a>
+            <a href="#" class="bg-white rounded-lg border border-brand-border p-6 hover:border-brand-teal transition block">
+                <h3 class="font-display text-[20px] font-medium mb-2">My Profile</h3>
+                <p class="text-[14px] text-brand-muted">Update your personal information and preferences.</p>
+            </a>
+            <a href="#booking" class="bg-brand-teal-light rounded-lg border border-brand-teal p-6 hover:bg-brand-teal-xlight transition block">
+                <h3 class="font-display text-[20px] font-medium text-brand-teal-dark mb-2">Book New Appointment</h3>
+                <p class="text-[14px] text-brand-teal-dark/70">Schedule your next treatment or consultation.</p>
+            </a>
+        </div>
+
+        <!-- AI Recommendations -->
+        <div class="bg-brand-gold-light rounded-lg border border-brand-border p-6 mb-8">
+            <h3 class="font-display text-[20px] font-medium mb-4">Recommended for You</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white rounded-lg p-4">
+                    <p class="text-[13px] font-medium mb-1">Follow-up Treatment</p>
+                    <p class="text-[12px] text-brand-muted">Based on your last HydraFacial, we recommend a follow-up in 4 weeks.</p>
+                </div>
+                <div class="bg-white rounded-lg p-4">
+                    <p class="text-[13px] font-medium mb-1">Try Botox</p>
+                    <p class="text-[12px] text-brand-muted">Complements your skincare routine. Book a consultation.</p>
+                </div>
+                <div class="bg-white rounded-lg p-4">
+                    <p class="text-[13px] font-medium mb-1">Skincare Product</p>
+                    <p class="text-[12px] text-brand-muted">Enhance results with our medical-grade vitamin C serum.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Placeholder Notice -->
+        <div class="bg-white rounded-lg border border-brand-border p-8 text-center">
+            <p class="text-[14px] text-brand-muted mb-2">Client portal functionality coming in Phase 5.</p>
+            <p class="text-[13px] text-brand-light-muted">This will include booking management, order history, AI-powered recommendations, and profile settings.</p>
+        </div>
+    </div>
+</section>

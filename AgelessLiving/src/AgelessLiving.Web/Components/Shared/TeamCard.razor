@@ -1,0 +1,18 @@
+@code {
+    [Parameter] public string Name { get; set; } = "";
+    [Parameter] public string Title { get; set; } = "";
+    [Parameter] public string Bio { get; set; } = "";
+    [Parameter] public string Initials { get; set; } = "";
+    [Parameter] public string BgColor { get; set; } = "#9ABFB5";
+}
+
+<div class="bg-white rounded-lg border border-brand-border overflow-hidden hover:border-brand-teal transition">
+    <div class="h-[200px] flex items-center justify-center font-display text-[36px] font-medium text-white" style="background-color: @BgColor">
+        @Initials
+    </div>
+    <div class="p-5">
+        <h4 class="font-display text-[18px] font-medium mb-0.5">@Name</h4>
+        <p class="text-[12px] text-brand-teal font-medium mb-2">@Title</p>
+        <p class="text-[12px] text-brand-muted leading-[1.55]">@Bio</p>
+    </div>
+</div>

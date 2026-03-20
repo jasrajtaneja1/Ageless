@@ -1,0 +1,62 @@
+@code {
+    [Parameter] public string Name { get; set; } = "";
+    [Parameter] public string Description { get; set; } = "";
+    [Parameter] public string Price { get; set; } = "";
+    [Parameter] public string Duration { get; set; } = "";
+    [Parameter] public string Locations { get; set; } = "All";
+    [Parameter] public bool ShowLocationBadges { get; set; } = false;
+    [Parameter] public bool Victoria { get; set; } = true;
+    [Parameter] public bool Langley { get; set; } = true;
+    [Parameter] public bool Kelowna { get; set; } = true;
+
+    private string GetButtonText()
+    {
+        if (Price.Contains("Complimentary") || Price.Contains("Consultation"))
+            return "Book consultation";
+        return "Book this treatment";
+    }
+}
+
+<div class="bg-white border border-brand-border rounded-[10px] p-6 flex flex-col hover:border-brand-teal transition">
+    <h3 class="font-display text-[18px] font-medium mb-2">@Name</h3>
+    <p class="text-[13px] text-brand-muted leading-[1.55] mb-4 flex-1">@Description</p>
+
+    @if (ShowLocationBadges)
+    {
+        <div class="flex flex-wrap gap-1.5 mb-3">
+            @if (Victoria)
+            {
+                <span class="bg-brand-teal-light text-brand-teal-dark text-[10px] px-2 py-0.5 rounded-full">Victoria</span>
+            }
+            else
+            {
+                <span class="bg-gray-100 text-gray-400 text-[10px] px-2 py-0.5 rounded-full line-through">Victoria</span>
+            }
+            @if (Langley)
+            {
+                <span class="bg-brand-teal-light text-brand-teal-dark text-[10px] px-2 py-0.5 rounded-full">Langley</span>
+            }
+            else
+            {
+                <span class="bg-gray-100 text-gray-400 text-[10px] px-2 py-0.5 rounded-full line-through">Langley</span>
+            }
+            @if (Kelowna)
+            {
+                <span class="bg-brand-teal-light text-brand-teal-dark text-[10px] px-2 py-0.5 rounded-full">Kelowna</span>
+            }
+            else
+            {
+                <span class="bg-gray-100 text-gray-400 text-[10px] px-2 py-0.5 rounded-full line-through">Kelowna</span>
+            }
+        </div>
+    }
+
+    <div class="flex justify-between items-center mb-3.5">
+        <span class="text-[14px] font-medium text-brand-teal">@Price</span>
+        <span class="text-[11px] text-brand-light-muted">@Duration · @Locations</span>
+    </div>
+
+    <a href="#booking" class="block text-center bg-brand-teal-xlight text-brand-teal-dark py-2.5 rounded-md text-[13px] font-medium hover:bg-brand-teal hover:text-white transition">
+        @GetButtonText()
+    </a>
+</div>

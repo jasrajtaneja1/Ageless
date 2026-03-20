@@ -1,0 +1,26 @@
+@code {
+    [Parameter] public string City { get; set; } = "";
+    [Parameter] public string Address { get; set; } = "";
+    [Parameter] public string Phone { get; set; } = "";
+    [Parameter] public string Email { get; set; } = "";
+    [Parameter] public string BookingUrl { get; set; } = "#booking";
+    [Parameter] public RenderFragment? HoursContent { get; set; }
+}
+
+<div class="bg-brand-cream rounded-lg border border-brand-border p-7 hover:border-brand-gold transition">
+    <h3 class="font-display text-[26px] font-medium mb-1.5">@City</h3>
+    <p class="text-[13px] text-brand-muted leading-[1.6] mb-3.5">@Address</p>
+    <p class="text-[13px] font-medium mb-0.5">@Phone</p>
+    <a href="mailto:@Email" class="text-[13px] text-brand-teal block mb-4">@Email</a>
+
+    <div class="py-3.5 border-t border-b border-brand-border mb-4">
+        @if (HoursContent != null)
+        {
+            @HoursContent
+        }
+    </div>
+
+    <a href="@BookingUrl" target="_blank" class="block w-full text-center bg-brand-teal text-white py-3 rounded-md text-[13px] font-medium hover:bg-brand-teal-dark transition">
+        Book at @City
+    </a>
+</div>

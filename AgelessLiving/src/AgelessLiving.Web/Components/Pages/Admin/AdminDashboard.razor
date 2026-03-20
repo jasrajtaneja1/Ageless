@@ -1,0 +1,75 @@
+@page "/admin"
+
+<PageTitle>Admin Dashboard | Ageless Living™</PageTitle>
+
+<section class="min-h-screen bg-brand-cream">
+    <!-- Admin Header -->
+    <header class="bg-white border-b border-brand-border px-6 py-4">
+        <div class="max-w-[1400px] mx-auto flex justify-between items-center">
+            <div>
+                <span class="font-display text-[20px] font-medium text-brand-teal-dark">Ageless Living™</span>
+                <span class="text-[12px] text-brand-muted ml-2">Admin</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-[13px] text-brand-muted">admin@agelessliving.ca</span>
+                <a href="/" class="text-[13px] text-brand-teal hover:underline">View site →</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-[1400px] mx-auto p-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <!-- Sidebar -->
+            <aside class="lg:col-span-1">
+                <nav class="bg-white rounded-lg border border-brand-border p-4">
+                    <p class="text-[11px] uppercase tracking-[2px] text-brand-light-muted mb-3">Navigation</p>
+                    <ul class="space-y-1">
+                        <li><a href="/admin" class="block px-3 py-2 text-[14px] bg-brand-teal-light text-brand-teal-dark rounded-md font-medium">Dashboard</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Bookings</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Orders</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Products</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Treatments</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Providers</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Locations</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Blog</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Clients</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Reviews</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Campaigns</a></li>
+                        <li><a href="#" class="block px-3 py-2 text-[14px] text-brand-muted hover:bg-brand-cream rounded-md transition">Settings</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="lg:col-span-3">
+                <h1 class="font-display text-[28px] font-medium mb-6">Dashboard</h1>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-white rounded-lg border border-brand-border p-5">
+                        <p class="text-[12px] text-brand-muted mb-1">Today's Bookings</p>
+                        <p class="font-display text-[32px] font-medium text-brand-teal">12</p>
+                    </div>
+                    <div class="bg-white rounded-lg border border-brand-border p-5">
+                        <p class="text-[12px] text-brand-muted mb-1">Pending Orders</p>
+                        <p class="font-display text-[32px] font-medium text-brand-gold">8</p>
+                    </div>
+                    <div class="bg-white rounded-lg border border-brand-border p-5">
+                        <p class="text-[12px] text-brand-muted mb-1">New Clients (Month)</p>
+                        <p class="font-display text-[32px] font-medium text-brand-teal">47</p>
+                    </div>
+                    <div class="bg-white rounded-lg border border-brand-border p-5">
+                        <p class="text-[12px] text-brand-muted mb-1">Revenue (Month)</p>
+                        <p class="font-display text-[32px] font-medium text-brand-teal">$24,580</p>
+                    </div>
+                </div>
+
+                <!-- Placeholder Content -->
+                <div class="bg-white rounded-lg border border-brand-border p-8 text-center">
+                    <p class="text-[14px] text-brand-muted mb-2">Admin dashboard functionality coming in Phase 5.</p>
+                    <p class="text-[13px] text-brand-light-muted">This will include booking management, order processing, content management, and more.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>

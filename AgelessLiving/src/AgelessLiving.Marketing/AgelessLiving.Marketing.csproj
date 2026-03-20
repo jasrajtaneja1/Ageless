@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgelessLiving.Core\AgelessLiving.Core.csproj" />
+    <ProjectReference Include="..\AgelessLiving.Infrastructure\AgelessLiving.Infrastructure.csproj" />
+    <ProjectReference Include="..\AgelessLiving.Commerce\AgelessLiving.Commerce.csproj" />
+    <ProjectReference Include="..\AgelessLiving.Booking\AgelessLiving.Booking.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.15.1" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

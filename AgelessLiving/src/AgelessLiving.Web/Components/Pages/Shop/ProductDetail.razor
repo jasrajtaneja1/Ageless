@@ -1,0 +1,49 @@
+@page "/shop/{Slug}"
+
+<PageTitle>Product | Ageless Living™</PageTitle>
+
+@code {
+    [Parameter]
+    public string? Slug { get; set; }
+}
+
+<section class="py-12 lg:py-20 px-6 lg:px-12">
+    <div class="max-w-[1240px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Product Image -->
+            <div class="bg-brand-teal-light rounded-2xl h-[500px] flex items-center justify-center text-brand-teal-dark/50 text-[14px]">
+                Product Image
+            </div>
+
+            <!-- Product Details -->
+            <div>
+                <a href="/shop" class="text-[13px] text-brand-teal mb-4 inline-block">← Back to shop</a>
+                <p class="text-[11px] text-brand-teal font-medium uppercase tracking-[.5px] mb-2">Category</p>
+                <h1 class="font-display text-[36px] font-medium mb-4">Product Name</h1>
+                <p class="text-[15px] text-brand-muted leading-[1.7] mb-6">
+                    Product description coming soon. This page will display full product details including ingredients, usage instructions, and related products.
+                </p>
+
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="text-[24px] font-medium text-brand-teal">$XX.XX CAD</span>
+                    <span class="text-[14px] text-brand-muted line-through">$XX.XX CAD</span>
+                </div>
+
+                <div class="flex gap-3 mb-8">
+                    <button class="flex-1 bg-brand-teal text-white py-3.5 rounded-md text-[14px] font-medium hover:bg-brand-teal-dark transition">
+                        Add to cart
+                    </button>
+                    <button class="px-6 border border-brand-border py-3.5 rounded-md text-[14px] font-medium hover:border-brand-dark transition">
+                        ♡
+                    </button>
+                </div>
+
+                <div class="border-t border-brand-border pt-6">
+                    <p class="text-[13px] text-brand-muted">
+                        Product details will be synced from Square in Phase 4.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,216 @@
+@rendermode InteractiveServer
+
+<div class="fixed bottom-6 right-6 z-[200]">
+    @if (!isOpen)
+    {
+        <!-- Collapsed Bubble -->
+        <button @onclick="Toggle" class="w-[60px] h-[60px] rounded-full bg-brand-teal text-white shadow-[0_4px_20px_rgba(42,157,143,.3)] cursor-pointer hover:bg-brand-teal-dark hover:scale-105 transition flex items-center justify-center relative">
+            <!-- Chat Icon SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <!-- Gold Notification Badge -->
+            <span class="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-brand-gold border-2 border-white"></span>
+        </button>
+    }
+    else
+    {
+        <!-- Expanded Panel -->
+        <div class="w-[380px] max-h-[min(580px,calc(100vh-100px))] bg-white rounded-2xl border border-brand-border shadow-[0_8px_40px_rgba(0,0,0,.12)] flex flex-col overflow-hidden">
+            <!-- Header -->
+            <div class="px-4 py-3.5 bg-brand-teal flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center text-white text-[14px] font-medium">
+                        AI
+                    </div>
+                    <div>
+                        <p class="text-white text-[14px] font-medium">Ageless AI</p>
+                        <p class="text-white/65 text-[11px]">Your wellness concierge</p>
+                    </div>
+                </div>
+                <button @onclick="Toggle" class="text-white/80 hover:text-white text-[24px] leading-none">×</button>
+            </div>
+
+            <!-- Messages Body -->
+            <div class="flex-1 overflow-y-auto p-4 flex flex-col gap-2.5 bg-brand-cream/50">
+                @foreach (var message in messages)
+                {
+                    @if (message.IsBot)
+                    {
+                        <div class="bg-brand-cream rounded-[2px_12px_12px_12px] px-3.5 py-2.5 text-[13px] max-w-[85%] self-start">
+                            @((MarkupString)message.Text)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="bg-brand-teal text-white rounded-[12px_2px_12px_12px] px-3.5 py-2.5 text-[13px] max-w-[85%] self-end">
+                            @message.Text
+                        </div>
+                    }
+                }
+
+                @if (showQuickActions)
+                {
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <button @onclick='() => HandleQuickAction("recommend")' class="bg-white border border-brand-border rounded-full px-3 py-1.5 text-[12px] text-brand-teal-dark hover:border-brand-teal hover:bg-brand-teal-light transition">
+                            Recommend a treatment
+                        </button>
+                        <button @onclick='() => HandleQuickAction("book")' class="bg-white border border-brand-border rounded-full px-3 py-1.5 text-[12px] text-brand-teal-dark hover:border-brand-teal hover:bg-brand-teal-light transition">
+                            Book a consultation
+                        </button>
+                        <button @onclick='() => HandleQuickAction("pricing")' class="bg-white border border-brand-border rounded-full px-3 py-1.5 text-[12px] text-brand-teal-dark hover:border-brand-teal hover:bg-brand-teal-light transition">
+                            See pricing
+                        </button>
+                        <button @onclick='() => HandleQuickAction("location")' class="bg-white border border-brand-border rounded-full px-3 py-1.5 text-[12px] text-brand-teal-dark hover:border-brand-teal hover:bg-brand-teal-light transition">
+                            Find a location
+                        </button>
+                    </div>
+                }
+            </div>
+
+            <!-- Input Area -->
+            <div class="px-3.5 py-2.5 border-t border-brand-border flex gap-2 items-center bg-white">
+                <input
+                    @bind="userInput"
+                    @bind:event="oninput"
+                    @onkeypress="HandleKeyPress"
+                    type="text"
+                    placeholder="Type your message..."
+                    class="flex-1 border border-brand-border rounded-full px-4 py-2.5 text-[13px] bg-brand-cream focus:border-brand-teal outline-none" />
+                <button @onclick="SendMessage" class="w-[34px] h-[34px] rounded-full bg-brand-teal text-white flex items-center justify-center hover:bg-brand-teal-dark transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private bool isOpen = false;
+    private string userInput = "";
+    private bool showQuickActions = true;
+    private List<ChatMessage> messages = new();
+
+    protected override void OnInitialized()
+    {
+        messages.Add(new ChatMessage
+        {
+            IsBot = true,
+            Text = "👋 Hi! I'm your Ageless Living wellness concierge. How can I help you today?"
+        });
+    }
+
+    private void Toggle()
+    {
+        isOpen = !isOpen;
+    }
+
+    private void HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            SendMessage();
+        }
+    }
+
+    private void SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(userInput)) return;
+
+        showQuickActions = false;
+        messages.Add(new ChatMessage { IsBot = false, Text = userInput });
+
+        var response = GetBotResponse(userInput.ToLower());
+        messages.Add(new ChatMessage { IsBot = true, Text = response });
+
+        userInput = "";
+    }
+
+    private void HandleQuickAction(string action)
+    {
+        showQuickActions = false;
+
+        switch (action)
+        {
+            case "recommend":
+                messages.Add(new ChatMessage { IsBot = false, Text = "Recommend a treatment" });
+                messages.Add(new ChatMessage
+                {
+                    IsBot = true,
+                    Text = "Based on our most popular treatments, I'd recommend:<br><br>• <strong>Botox/Dysport</strong> — From $299 CAD<br>• <strong>HydraFacial</strong> — From $199 CAD<br>• <strong>Bioidentical Hormone Therapy</strong> — Free consult<br><br>Would you like more details on any of these?"
+                });
+                break;
+            case "book":
+                messages.Add(new ChatMessage { IsBot = false, Text = "Book a consultation" });
+                messages.Add(new ChatMessage
+                {
+                    IsBot = true,
+                    Text = "Great! Which location works best for you?<br><br>• <strong>Langley</strong> — +1 (236) 326-6830<br>• <strong>Victoria</strong> — +1 (250) 590-5787<br>• <strong>Kelowna</strong> — +1 (778) 760-9827<br><br>You can also <a href='#booking' class='text-brand-teal underline'>book online</a>."
+                });
+                break;
+            case "pricing":
+                messages.Add(new ChatMessage { IsBot = false, Text = "See pricing" });
+                messages.Add(new ChatMessage
+                {
+                    IsBot = true,
+                    Text = "<strong>Skin Rejuvenation</strong><br>• Botox: From $299 CAD<br>• Fillers: From $449 CAD<br>• HydraFacial: From $199 CAD<br><br><strong>Hormone Therapy</strong><br>• Free initial consultation<br><br><strong>Biohacking</strong><br>• From $49–$199 CAD<br><br><strong>Healthy Weight</strong><br>• Free initial consultation"
+                });
+                break;
+            case "location":
+                messages.Add(new ChatMessage { IsBot = false, Text = "Find a location" });
+                messages.Add(new ChatMessage
+                {
+                    IsBot = true,
+                    Text = "<strong>Langley</strong><br>415-20178 96th Ave, Langley BC<br>+1 (236) 326-6830<br><br><strong>Victoria</strong><br>1-101 Burnside Rd W, Victoria BC<br>+1 (250) 590-5787<br><br><strong>Kelowna</strong><br>102-3320 Richter St, Kelowna BC<br>+1 (778) 760-9827"
+                });
+                break;
+        }
+    }
+
+    private string GetBotResponse(string input)
+    {
+        if (input.Contains("recommend") || input.Contains("suggest") || input.Contains("best") || input.Contains("which"))
+        {
+            return "Based on your interest, I'd recommend starting with a consultation. Our top treatments include:<br><br>• <strong>Botox/Dysport</strong> for wrinkles<br>• <strong>HydraFacial</strong> for skin glow<br>• <strong>Hormone Therapy</strong> for energy and vitality";
+        }
+        if (input.Contains("book") || input.Contains("appointment") || input.Contains("schedule"))
+        {
+            return "You can book online at any of our 3 locations! Visit the <a href='#booking' class='text-brand-teal underline'>booking section</a> or call your preferred clinic directly.";
+        }
+        if (input.Contains("price") || input.Contains("cost") || input.Contains("how much"))
+        {
+            return "Our treatments range from $49 for biohacking services to $449+ for dermal fillers. Many consultations are complimentary. Would you like pricing for a specific treatment?";
+        }
+        if (input.Contains("location") || input.Contains("where") || input.Contains("address") || input.Contains("hour"))
+        {
+            return "We have 3 locations in BC: <strong>Langley</strong>, <strong>Victoria</strong>, and <strong>Kelowna</strong>. All clinics are open Mon-Fri 9-5, with Saturday hours varying by location.";
+        }
+        if (input.Contains("skin") || input.Contains("botox") || input.Contains("filler") || input.Contains("facial") || input.Contains("laser"))
+        {
+            return "Our Skin Rejuvenation treatments include Botox ($299+), fillers ($449+), HydraFacial ($199+), laser treatments ($249+), and medical peels ($349+). Would you like to book a skin consultation?";
+        }
+        if (input.Contains("hormone") || input.Contains("testosterone") || input.Contains("menopause"))
+        {
+            return "Our Hormone Balancing programs include bioidentical hormone therapy, testosterone optimization, and menopause support. All initial consultations are complimentary!";
+        }
+        if (input.Contains("biohack") || input.Contains("nad") || input.Contains("iv") || input.Contains("peptide") || input.Contains("hbot"))
+        {
+            return "Our Biohacking services include IV therapy, HBOT, red light therapy, infrared sauna, and neurofeedback. Prices start from $49 CAD. Availability varies by location.";
+        }
+        if (input.Contains("weight") || input.Contains("metabol") || input.Contains("diet"))
+        {
+            return "Our Healthy Weight program is physician-supervised with free initial consultation. It includes GLP-1 protocols, metabolic testing ($149), and body composition analysis ($99).";
+        }
+
+        return "I'm here to help with treatment recommendations, booking, pricing, and location info. What would you like to know more about?";
+    }
+
+    private class ChatMessage
+    {
+        public bool IsBot { get; set; }
+        public string Text { get; set; } = "";
+    }
+}

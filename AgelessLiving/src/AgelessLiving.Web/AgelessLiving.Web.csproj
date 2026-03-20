@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgelessLiving.Core\AgelessLiving.Core.csproj" />
+    <ProjectReference Include="..\AgelessLiving.Infrastructure\AgelessLiving.Infrastructure.csproj" />
+    <ProjectReference Include="..\AgelessLiving.Booking\AgelessLiving.Booking.csproj" />
+    <ProjectReference Include="..\AgelessLiving.Commerce\AgelessLiving.Commerce.csproj" />
+    <ProjectReference Include="..\AgelessLiving.Content\AgelessLiving.Content.csproj" />
+    <ProjectReference Include="..\AgelessLiving.AI\AgelessLiving.AI.csproj" />
+    <ProjectReference Include="..\AgelessLiving.Marketing\AgelessLiving.Marketing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.8.23" />
+    <PackageReference Include="Hangfire.Core" Version="1.8.23" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.8.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="9.0.3" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+  </PropertyGroup>
+
+  <Target Name="TailwindBuild" BeforeTargets="Build">
+    <Exec Command="node_modules\.bin\tailwindcss.cmd -i ./Styles/app.css -o ./wwwroot/css/site.css --minify" WorkingDirectory="$(ProjectDir)" />
+  </Target>
+
+</Project>

@@ -1,0 +1,60 @@
+@page "/shop"
+
+<PageTitle>Shop | Ageless Living™</PageTitle>
+
+<!-- Hero -->
+<section class="bg-white py-16 px-6 lg:px-12">
+    <div class="max-w-[1240px] mx-auto text-center">
+        <p class="text-[11px] uppercase tracking-[3px] font-medium text-brand-gold mb-4">Shop</p>
+        <h1 class="font-display text-[42px] font-normal mb-4">Shop Ageless Living</h1>
+        <p class="text-[15px] text-brand-muted max-w-[520px] mx-auto">
+            Browse our collection of skincare, supplements, and wellness products curated by our medical team.
+        </p>
+    </div>
+</section>
+
+<!-- Products Grid -->
+<section class="py-12 lg:py-20 px-6 lg:px-12 bg-brand-cream">
+    <div class="max-w-[1240px] mx-auto">
+        <!-- Filter Bar (Placeholder) -->
+        <div class="flex flex-wrap gap-4 mb-8 justify-between items-center">
+            <div class="flex gap-2">
+                <span class="bg-brand-teal text-white px-4 py-2 rounded-full text-[13px] font-medium">All Products</span>
+                <span class="bg-white border border-brand-border px-4 py-2 rounded-full text-[13px] text-brand-muted hover:border-brand-teal cursor-pointer transition">Skincare</span>
+                <span class="bg-white border border-brand-border px-4 py-2 rounded-full text-[13px] text-brand-muted hover:border-brand-teal cursor-pointer transition">Supplements</span>
+                <span class="bg-white border border-brand-border px-4 py-2 rounded-full text-[13px] text-brand-muted hover:border-brand-teal cursor-pointer transition">Wellness</span>
+            </div>
+            <span class="text-[13px] text-brand-muted">117 products</span>
+        </div>
+
+        <!-- Products Grid (Placeholder) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @for (int i = 1; i <= 8; i++)
+            {
+                <div class="bg-white rounded-lg border border-brand-border overflow-hidden hover:border-brand-teal transition">
+                    <div class="h-[200px] bg-brand-teal-light flex items-center justify-center text-brand-teal-dark/50 text-[14px]">
+                        Product Image
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[11px] text-brand-teal font-medium uppercase tracking-[.5px] mb-1">Category</p>
+                        <h3 class="font-display text-[18px] font-medium mb-2">Product Name</h3>
+                        <p class="text-[13px] text-brand-muted mb-3">Product description coming soon.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[14px] font-medium text-brand-teal">$XX.XX CAD</span>
+                            <button class="bg-brand-teal-xlight text-brand-teal-dark px-4 py-2 rounded-md text-[12px] font-medium hover:bg-brand-teal hover:text-white transition">
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Coming Soon Notice -->
+        <div class="mt-12 text-center py-12 bg-white rounded-lg border border-brand-border">
+            <p class="text-[14px] text-brand-muted">
+                Products will be synced from Square in Phase 4.
+            </p>
+        </div>
+    </div>
+</section>

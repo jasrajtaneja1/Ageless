@@ -1,0 +1,9 @@
+@code {
+    [Parameter] public string Number { get; set; } = "";
+    [Parameter] public string Label { get; set; } = "";
+}
+
+<div class="bg-white border border-brand-border rounded-[10px] p-5">
+    <span class="font-display text-[36px] font-medium text-brand-teal block">@Number</span>
+    <span class="text-[12px] text-brand-muted mt-0.5 block">@Label</span>
+</div>

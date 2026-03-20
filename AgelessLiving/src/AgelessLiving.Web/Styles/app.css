@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@source "../Components/**/*.razor";
+@source "../Components/**/*.cshtml";
+@source "../**/*.html";
+
+@theme {
+  /* Brand Colors */
+  --color-brand-teal: #2A9D8F;
+  --color-brand-teal-dark: #1E7A6E;
+  --color-brand-teal-light: #E8F5F2;
+  --color-brand-teal-xlight: #F2FAF8;
+  --color-brand-gold: #C8A951;
+  --color-brand-gold-dark: #B89840;
+  --color-brand-gold-light: #F5F0E0;
+  --color-brand-cream: #FAF8F5;
+  --color-brand-dark: #1D1D1D;
+  --color-brand-muted: #6B6B6B;
+  --color-brand-light-muted: #9A9A9A;
+  --color-brand-border: #E8E5E0;
+
+  /* Category Colors */
+  --color-cat-skin: #C4918A;
+  --color-cat-hormone: #8AAEC4;
+  --color-cat-bio: #8AC4A8;
+  --color-cat-weight: #C4B88A;
+
+  /* Font Families */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}

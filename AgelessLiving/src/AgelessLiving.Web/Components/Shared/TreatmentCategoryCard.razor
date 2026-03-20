@@ -1,0 +1,17 @@
+@code {
+    [Parameter] public string Name { get; set; } = "";
+    [Parameter] public string Desc { get; set; } = "";
+    [Parameter] public string Color { get; set; } = "cat-skin";
+    [Parameter] public string Link { get; set; } = "#";
+}
+
+<a href="@Link" class="bg-white rounded-lg border border-brand-border hover:border-brand-teal hover:-translate-y-1 transition-all duration-300 overflow-hidden block">
+    <div class="h-[150px] bg-@Color flex items-center justify-center">
+        <span class="text-white font-medium text-[14px]">Photo</span>
+    </div>
+    <div class="p-5">
+        <h3 class="font-display text-[20px] font-medium mb-1.5">@Name</h3>
+        <p class="text-[13px] text-brand-muted leading-[1.5] mb-3.5">@Desc</p>
+        <span class="text-[13px] text-brand-teal font-medium">View treatments →</span>
+    </div>
+</a>

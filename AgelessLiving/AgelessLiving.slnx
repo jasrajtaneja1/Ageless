@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AgelessLiving.AI/AgelessLiving.AI.csproj" />
+    <Project Path="src/AgelessLiving.Booking/AgelessLiving.Booking.csproj" />
+    <Project Path="src/AgelessLiving.Commerce/AgelessLiving.Commerce.csproj" />
+    <Project Path="src/AgelessLiving.Content/AgelessLiving.Content.csproj" />
+    <Project Path="src/AgelessLiving.Core/AgelessLiving.Core.csproj" />
+    <Project Path="src/AgelessLiving.Infrastructure/AgelessLiving.Infrastructure.csproj" />
+    <Project Path="src/AgelessLiving.Marketing/AgelessLiving.Marketing.csproj" />
+    <Project Path="src/AgelessLiving.Web/AgelessLiving.Web.csproj" />
+  </Folder>
+</Solution>

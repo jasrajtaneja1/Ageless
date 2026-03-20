@@ -1,0 +1,21 @@
+@code {
+    [Parameter] public string Quote { get; set; } = "";
+    [Parameter] public string AuthorName { get; set; } = "";
+    [Parameter] public string Initials { get; set; } = "";
+    [Parameter] public string Location { get; set; } = "";
+    [Parameter] public string Treatment { get; set; } = "";
+}
+
+<div class="bg-white rounded-lg border border-brand-border p-7">
+    <div class="text-brand-gold text-[16px] tracking-[2px] mb-3.5">★★★★★</div>
+    <p class="text-[14px] text-brand-dark italic leading-[1.65] mb-5">"@Quote"</p>
+    <div class="flex items-center gap-2.5">
+        <div class="w-[38px] h-[38px] rounded-full bg-brand-teal-light flex items-center justify-center text-[13px] font-medium text-brand-teal-dark">
+            @Initials
+        </div>
+        <div>
+            <p class="text-[13px] font-medium">@AuthorName</p>
+            <p class="text-[11px] text-brand-muted">@Location · @Treatment</p>
+        </div>
+    </div>
+</div>

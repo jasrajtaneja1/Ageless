@@ -1,0 +1,18 @@
+@code {
+    [Parameter] public string Tag { get; set; } = "";
+    [Parameter] public string Heading { get; set; } = "";
+    [Parameter] public string Description { get; set; } = "";
+    [Parameter] public bool Center { get; set; } = false;
+}
+
+<div class="@(Center ? "text-center" : "")">
+    @if (!string.IsNullOrEmpty(Tag))
+    {
+        <p class="text-[11px] uppercase tracking-[3px] font-medium text-brand-gold mb-4">@Tag</p>
+    }
+    <h2 class="font-display text-[38px] font-normal leading-[1.15] text-brand-dark mb-4">@((MarkupString)Heading)</h2>
+    @if (!string.IsNullOrEmpty(Description))
+    {
+        <p class="text-[15px] text-brand-muted max-w-[520px] mb-12 leading-[1.7] @(Center ? "mx-auto" : "")">@Description</p>
+    }
+</div>
