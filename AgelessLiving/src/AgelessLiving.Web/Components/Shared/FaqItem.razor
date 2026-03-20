@@ -1,21 +1,23 @@
+@*
+    FaqItem: Expandable accordion item for FAQ section.
+    Toggles answer visibility on click with rotating + icon.
+*@
+
 @code {
     [Parameter] public string Question { get; set; } = "";
     [Parameter] public string Answer { get; set; } = "";
 
-    private bool isOpen = false;
+    private bool _isOpen;
 
-    private void Toggle()
-    {
-        isOpen = !isOpen;
-    }
+    private void Toggle() => _isOpen = !_isOpen;
 }
 
 <div class="border-b border-brand-border">
-    <button @onclick="Toggle" class="w-full flex justify-between items-center py-5 text-left font-display text-[20px] font-medium gap-4">
+    <button @onclick="Toggle" class="w-full flex justify-between items-center py-5 text-left font-display text-[20px] font-medium gap-4" aria-expanded="@_isOpen">
         <span>@Question</span>
-        <span class="text-[22px] text-brand-muted transition-transform duration-300 @(isOpen ? "rotate-45" : "")">+</span>
+        <span class="text-[22px] text-brand-muted transition-transform duration-300 @(_isOpen ? "rotate-45" : "")">+</span>
     </button>
-    @if (isOpen)
+    @if (_isOpen)
     {
         <div class="text-[14px] text-brand-muted leading-[1.7] pb-5">
             @Answer

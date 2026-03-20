@@ -1,3 +1,8 @@
+@*
+    NavBar: Sticky navigation bar with desktop links and mobile hamburger menu.
+    Links scroll to sections on the homepage or navigate to other pages.
+*@
+
 <nav class="sticky top-0 z-50 bg-white/[.97] backdrop-blur-sm border-b border-brand-border">
     <div class="max-w-[1240px] mx-auto px-6 lg:px-12 h-[68px] flex items-center justify-between">
         <!-- Logo -->
@@ -8,19 +13,16 @@
 
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center gap-7">
-            <a href="#treatments" class="text-[13px] text-brand-muted hover:text-brand-dark transition">Treatments</a>
-            <a href="#locations" class="text-[13px] text-brand-muted hover:text-brand-dark transition">Locations</a>
-            <a href="#about" class="text-[13px] text-brand-muted hover:text-brand-dark transition">About</a>
-            <a href="#team" class="text-[13px] text-brand-muted hover:text-brand-dark transition">Team</a>
-            <a href="#blog" class="text-[13px] text-brand-muted hover:text-brand-dark transition">Blog</a>
-            <a href="#faq" class="text-[13px] text-brand-muted hover:text-brand-dark transition">FAQ</a>
-            <a href="#contact" class="text-[13px] text-brand-muted hover:text-brand-dark transition">Contact</a>
+            @foreach (var link in NavLinks)
+            {
+                <a href="@link.Href" class="text-[13px] text-brand-muted hover:text-brand-dark transition">@link.Label</a>
+            }
             <a href="/shop" class="text-[13px] text-brand-gold font-medium hover:text-brand-gold-dark transition">Shop</a>
             <a href="#booking" class="bg-brand-teal text-white px-5 py-2 rounded-md text-[13px] font-medium hover:bg-brand-teal-dark transition">Book Now</a>
         </div>
 
         <!-- Mobile Hamburger -->
-        <button @onclick="ToggleMenu" class="lg:hidden flex flex-col gap-1.5 p-2">
+        <button @onclick="ToggleMenu" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
             <span class="w-6 h-0.5 bg-brand-dark transition @(isOpen ? "rotate-45 translate-y-2" : "")"></span>
             <span class="w-6 h-0.5 bg-brand-dark transition @(isOpen ? "opacity-0" : "")"></span>
             <span class="w-6 h-0.5 bg-brand-dark transition @(isOpen ? "-rotate-45 -translate-y-2" : "")"></span>
@@ -31,13 +33,10 @@
     @if (isOpen)
     {
         <div class="lg:hidden bg-white border-t border-brand-border py-4 px-6">
-            <a href="#treatments" @onclick="CloseMenu" class="block py-3 text-[15px] text-brand-muted hover:text-brand-dark border-b border-brand-border">Treatments</a>
-            <a href="#locations" @onclick="CloseMenu" class="block py-3 text-[15px] text-brand-muted hover:text-brand-dark border-b border-brand-border">Locations</a>
-            <a href="#about" @onclick="CloseMenu" class="block py-3 text-[15px] text-brand-muted hover:text-brand-dark border-b border-brand-border">About</a>
-            <a href="#team" @onclick="CloseMenu" class="block py-3 text-[15px] text-brand-muted hover:text-brand-dark border-b border-brand-border">Team</a>
-            <a href="#blog" @onclick="CloseMenu" class="block py-3 text-[15px] text-brand-muted hover:text-brand-dark border-b border-brand-border">Blog</a>
-            <a href="#faq" @onclick="CloseMenu" class="block py-3 text-[15px] text-brand-muted hover:text-brand-dark border-b border-brand-border">FAQ</a>
-            <a href="#contact" @onclick="CloseMenu" class="block py-3 text-[15px] text-brand-muted hover:text-brand-dark border-b border-brand-border">Contact</a>
+            @foreach (var link in NavLinks)
+            {
+                <a href="@link.Href" @onclick="CloseMenu" class="block py-3 text-[15px] text-brand-muted hover:text-brand-dark border-b border-brand-border">@link.Label</a>
+            }
             <a href="/shop" class="block py-3 text-[15px] text-brand-gold font-medium border-b border-brand-border">Shop</a>
             <a href="#booking" @onclick="CloseMenu" class="block mt-4 text-center bg-brand-teal text-white py-3 rounded-md text-[14px] font-medium">Book Now</a>
         </div>
@@ -47,13 +46,19 @@
 @code {
     private bool isOpen = false;
 
-    private void ToggleMenu()
+    // Navigation links rendered in both desktop and mobile menus
+    private static readonly (string Label, string Href)[] NavLinks =
     {
-        isOpen = !isOpen;
-    }
+        ("Treatments", "#treatments"),
+        ("Locations", "#locations"),
+        ("About", "#about"),
+        ("Team", "#team"),
+        ("Blog", "#blog"),
+        ("FAQ", "#faq"),
+        ("Contact", "#contact")
+    };
 
-    private void CloseMenu()
-    {
-        isOpen = false;
-    }
+    private void ToggleMenu() => isOpen = !isOpen;
+
+    private void CloseMenu() => isOpen = false;
 }

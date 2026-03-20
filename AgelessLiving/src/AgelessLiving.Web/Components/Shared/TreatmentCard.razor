@@ -1,3 +1,8 @@
+@*
+    TreatmentCard: Displays a single treatment with pricing, duration, and location availability.
+    Used in TreatmentGroupSection to render all 22 treatments.
+*@
+
 @code {
     [Parameter] public string Name { get; set; } = "";
     [Parameter] public string Description { get; set; } = "";
@@ -9,12 +14,18 @@
     [Parameter] public bool Langley { get; set; } = true;
     [Parameter] public bool Kelowna { get; set; } = true;
 
-    private string GetButtonText()
+    // Location data for badge rendering
+    private IEnumerable<(string Name, bool Available)> LocationBadges => new[]
     {
-        if (Price.Contains("Complimentary") || Price.Contains("Consultation"))
-            return "Book consultation";
-        return "Book this treatment";
-    }
+        ("Victoria", Victoria),
+        ("Langley", Langley),
+        ("Kelowna", Kelowna)
+    };
+
+    private string GetButtonText() =>
+        Price.Contains("Complimentary") || Price.Contains("Consultation")
+            ? "Book consultation"
+            : "Book this treatment";
 }
 
 <div class="bg-white border border-brand-border rounded-[10px] p-6 flex flex-col hover:border-brand-teal transition">
@@ -24,29 +35,11 @@
     @if (ShowLocationBadges)
     {
         <div class="flex flex-wrap gap-1.5 mb-3">
-            @if (Victoria)
+            @foreach (var (name, available) in LocationBadges)
             {
-                <span class="bg-brand-teal-light text-brand-teal-dark text-[10px] px-2 py-0.5 rounded-full">Victoria</span>
-            }
-            else
-            {
-                <span class="bg-gray-100 text-gray-400 text-[10px] px-2 py-0.5 rounded-full line-through">Victoria</span>
-            }
-            @if (Langley)
-            {
-                <span class="bg-brand-teal-light text-brand-teal-dark text-[10px] px-2 py-0.5 rounded-full">Langley</span>
-            }
-            else
-            {
-                <span class="bg-gray-100 text-gray-400 text-[10px] px-2 py-0.5 rounded-full line-through">Langley</span>
-            }
-            @if (Kelowna)
-            {
-                <span class="bg-brand-teal-light text-brand-teal-dark text-[10px] px-2 py-0.5 rounded-full">Kelowna</span>
-            }
-            else
-            {
-                <span class="bg-gray-100 text-gray-400 text-[10px] px-2 py-0.5 rounded-full line-through">Kelowna</span>
+                <span class="@(available ? "bg-brand-teal-light text-brand-teal-dark" : "bg-gray-100 text-gray-400 line-through") text-[10px] px-2 py-0.5 rounded-full">
+                    @name
+                </span>
             }
         </div>
     }

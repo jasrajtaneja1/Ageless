@@ -1,6 +1,11 @@
+@*
+    TreatmentCategoryCard: Category overview card linking to treatment groups.
+    Displays category image placeholder, name, description, and link to treatments.
+*@
+
 @code {
     [Parameter] public string Name { get; set; } = "";
-    [Parameter] public string Desc { get; set; } = "";
+    [Parameter] public string Description { get; set; } = "";
     [Parameter] public string Color { get; set; } = "cat-skin";
     [Parameter] public string Link { get; set; } = "#";
 }
@@ -11,7 +16,7 @@
     </div>
     <div class="p-5">
         <h3 class="font-display text-[20px] font-medium mb-1.5">@Name</h3>
-        <p class="text-[13px] text-brand-muted leading-[1.5] mb-3.5">@Desc</p>
+        <p class="text-[13px] text-brand-muted leading-[1.5] mb-3.5">@Description</p>
         <span class="text-[13px] text-brand-teal font-medium">View treatments →</span>
     </div>
 </a>

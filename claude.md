@@ -1,7 +1,7 @@
 # Claude Instructions
 
 ## Source of truth
-Always read `spec.md` before making changes. Treat `spec.md` as the primary source of truth for requirements, scope, and intended behavior.
+Always read `spec.md` before making changes. Treat `spec.md` as the primary source of truth for requirements, scope, and intended behavior. Add brief comments to explain general code. 
 
 ## Required workflow
 For every coding task:

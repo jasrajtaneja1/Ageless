@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgelessLiving.Booking")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5fac00a79bc3c9cbf5ea8a2886dc4b6668a9a6fa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08297fb75dac13f0079d981ed9944c401847d7aa")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgelessLiving.Booking")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgelessLiving.Booking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
